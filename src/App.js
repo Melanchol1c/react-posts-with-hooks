@@ -1,14 +1,21 @@
 import React from 'react';
 import './App.css';
-import PostsList from './components/PostsList'
+import { BrowserRouter } from 'react-router-dom';
+import AppRouter from './routes';
+import Header from './components/Header';
 
 /**
  * Main application component
  */
 function App() {
-  return <div>
-    <PostsList />
-  </div>;
+  return (
+    <div>
+      <BrowserRouter>
+        <Header />
+        <AppRouter />
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;

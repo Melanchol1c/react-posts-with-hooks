@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
-
-const POSTS_API_URL = 'https://jsonplaceholder.typicode.com/posts';
+import { POSTS_API } from '../apiUrls';
 
 /**
  * Custom hook to work with list of posts.
@@ -12,10 +11,9 @@ export default function usePosts() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    Axios.get(POSTS_API_URL)
+    Axios.get(POSTS_API)
       .then(res => setPosts(res.data))
       .catch(() => setError(true));
-    console.log('effect used');
   }, []);
 
   return { posts, error };

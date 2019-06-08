@@ -1,9 +1,9 @@
 import React from 'react';
 import usePosts from '../hooks/usePosts';
-import Post from './Post';
+import { Link } from 'react-router-dom';
 
 /**
- * List of articles component
+ * List of posts component
  */
 export default function ArticlesList() {
   const { posts, error } = usePosts();
@@ -13,8 +13,11 @@ export default function ArticlesList() {
         <span>There is an error with server...</span>
       ) : (
         <ul>
-          {posts.map(postData => (
-            <Post key={postData.id} data={postData} />
+          {posts.map(post => (
+            <div key={post.id}>
+              <Link to={`/posts/${post.id}`}>{post.title}</Link>
+              <p>{post.body.substr(0, 200)}...</p>
+            </div>
           ))}
         </ul>
       )}
