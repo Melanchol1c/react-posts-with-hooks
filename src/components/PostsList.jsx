@@ -7,6 +7,16 @@ import { Link } from 'react-router-dom';
  */
 export default function ArticlesList() {
   const { posts, error, loading } = usePosts();
+
+  /**
+   * Cut post's body by selected number of symbols.
+   * @param {String} postBody Body of post.
+   * @param {Number} resultLength Number of symbols of result short body (default is 150).
+   * @returns {String} Returns final short body.
+   */
+  function cutLongBody(postBody, resultLength = 150) {
+    return `${postBody.substr(0, resultLength)}...`;
+  }
   return (
     <div>
       {error ? (
@@ -17,8 +27,10 @@ export default function ArticlesList() {
         <ul>
           {posts.map(post => (
             <div key={post.id}>
-              <Link to={`/posts/${post.id}`}>{post.title}</Link>
-              <p>{post.body.substr(0, 200)}...</p>
+              <Link to={`/posts/${post.id}`}>
+                <h2>{post.title}</h2>
+              </Link>
+              <p>{cutLongBody(post.body)}</p>
             </div>
           ))}
         </ul>
