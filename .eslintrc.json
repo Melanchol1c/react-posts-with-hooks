@@ -1,7 +1,19 @@
 {
   "extends": ["react-app", "prettier"],
   "rules": {
-    "jsx-quotes": [1, "prefer-single"]
+    "jsx-quotes": [1, "prefer-single"],
+    "require-jsdoc": [
+      "error",
+      {
+        "require": {
+          "FunctionDeclaration": true,
+          "MethodDefinition": false,
+          "ClassDeclaration": false,
+          "ArrowFunctionExpression": false,
+          "FunctionExpression": false
+        }
+      }
+    ]
   },
-  "plugins": ["prettier"]
+  "plugins": ["prettier", "jsdoc"]
 }
