@@ -6,11 +6,13 @@ import { Link } from 'react-router-dom';
  * List of posts component
  */
 export default function ArticlesList() {
-  const { posts, error } = usePosts();
+  const { posts, error, loading } = usePosts();
   return (
     <div>
       {error ? (
         <span>There is an error with server...</span>
+      ) : loading ? (
+        <span>Loading...</span>
       ) : (
         <ul>
           {posts.map(post => (

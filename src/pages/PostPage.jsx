@@ -6,12 +6,14 @@ import usePosts from '../hooks/usePost';
  */
 export default function PostPage(props) {
   const postId = props.match.params.postId;
-  const { post, error } = usePosts(postId);
+  const { post, error, loading } = usePosts(postId);
 
   return (
     <div>
       {error ? (
         <span>Sorry, there is an error with server...</span>
+      ) : loading ? (
+        <span>Loading...</span>
       ) : (
         <Fragment>
           <h2>{post.title}</h2>

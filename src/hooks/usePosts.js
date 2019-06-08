@@ -9,12 +9,17 @@ import { POSTS_API } from '../apiUrls';
 export default function usePosts() {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = 'Melancholic Blog - All Posts'
     Axios.get(POSTS_API)
-      .then(res => setPosts(res.data))
+      .then(res => {
+        setPosts(res.data);
+        setLoading(false);
+      })
       .catch(() => setError(true));
   }, []);
 
-  return { posts, error };
+  return { posts, loading, error };
 }

@@ -6,7 +6,7 @@ import React from 'react';
 export default function Header() {
   return (
     <div>
-      <h1>kirizey.melancholic's blog</h1>
+      <h1>Melancholic's Blog</h1>
     </div>
   );
 }
