@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import PostsList from '../components/PostsList'
 
 /**
  * Main page
  */
 export default function MainPage() {
-    return (
-        <div>
-            <PostsList />
-        </div>
-    )
+  useEffect(() => {
+    document.title = `Melancholic's Posts - All posts`;
+  });
+
+  return <PostsList />;
 }

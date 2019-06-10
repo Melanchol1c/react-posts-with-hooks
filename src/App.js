@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import AppRouter from './routes';
 import Header from './components/Header';
+import { Container } from '@material-ui/core';
 
 /**
  * Main application component
@@ -12,7 +13,9 @@ function App() {
     <div>
       <BrowserRouter>
         <Header />
-        <AppRouter />
+        <Container>
+          <AppRouter />
+        </Container>
       </BrowserRouter>
     </div>
   );

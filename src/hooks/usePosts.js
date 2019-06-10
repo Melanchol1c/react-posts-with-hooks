@@ -12,13 +12,15 @@ export default function usePosts() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    document.title = 'Melancholic Blog - All Posts'
     Axios.get(POSTS_API)
       .then(res => {
         setPosts(res.data);
         setLoading(false);
       })
-      .catch(() => setError(true));
+      .catch(() => {
+        setError(true)
+        setLoading(false);
+      });
   }, []);
 
   return { posts, loading, error };
